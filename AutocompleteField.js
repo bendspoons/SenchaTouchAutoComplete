@@ -1,8 +1,8 @@
 /**
-* StbApp.AutocompleteField
+* App.AutocompleteField
 * Autocomplete Model für das durchsuchen des Telefonbuchs für schnelles ausfüllen des Formulkars (Vorschläge)
 */
-Ext.define('StbApp.src.ContactAutocompleteField', {
+Ext.define('App.src.ContactAutocompleteField', {
 	extend: 'Ext.field.Text',
 	xtype: 'autocompletefield',
 	config: {
@@ -29,6 +29,7 @@ Ext.define('StbApp.src.ContactAutocompleteField', {
 
 	/**
 	* @property {setValue}
+	* @return {void} 
 	*/
 	setValue: function(newShownValue, newSelectedValue) {
 		this.currentShownValue = newShownValue;
@@ -76,25 +77,7 @@ Ext.define('StbApp.src.ContactAutocompleteField', {
 			        
 			        navigator.contacts.find(fields, function(gatheredContacts) { // success			        	
 				        if(gatheredContacts.length > 0) {
-				        	var firstFoundContact = gatheredContacts[0];
-				        	
-				        	log('firstFoundContact');
-				        	log(firstFoundContact);
-				        	
-				        	if(StbApp.app.getController('Settings').getFormPhoneField().getValue().toString().length == 0 || phoneWasEmptyOnLoad == true) {
-				        		if(firstFoundContact.phoneNumbers != null) {
-									StbApp.app.getController('Settings').getFormPhoneField().setValue(firstFoundContact.phoneNumbers[0].value.onlyNumbers().strip_tags().trim());
-				        		} else {
-									StbApp.app.getController('Settings').getFormPhoneField().setValue('');
-				        		}
-				        	}
-				        	if(StbApp.app.getController('Settings').getFormEmailField().getValue().length == 0 || emailWasEmptyOnLoad == true) {
-				        		if(firstFoundContact.emails != null) {
-									StbApp.app.getController('Settings').getFormEmailField().setValue(firstFoundContact.emails[0].value.strip_tags().trim());
-				        		} else {
-									StbApp.app.getController('Settings').getFormEmailField().setValue('');
-				        		}
-				        	}
+
 				        }
 			        }, function(error) {
 			        	log(error);
@@ -112,14 +95,6 @@ Ext.define('StbApp.src.ContactAutocompleteField', {
 		});
 
 		this.getComponent().on('focus', function(event) {
-	    	if(StbApp.app.getController('Settings').getFormEmailField().getValue().length == 0) {
-				log('checkonload emailWasEmptyOnLoad = true');
-				emailWasEmptyOnLoad = true;
-	    	}
-	    	if(StbApp.app.getController('Settings').getFormPhoneField().getValue().toString().length <= 1) {
-				log('checkonload phoneWasEmptyOnLoad = true');
-				phoneWasEmptyOnLoad = true;
-	    	}
 		});
 
 	}
