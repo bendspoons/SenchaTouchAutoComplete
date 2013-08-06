@@ -25,19 +25,7 @@
 									value: 'Ha',
 									config: {
 										resultsDisplay: {
-								        	qMinLength: 2,
-								        	itemTpl: '--> {city.name}, {county.name} - {state.name}',
-								        	itemTpl: '--> {city}, {county} - {state}',
-								        	emptyText: 'No results',
-								        	loadingText: 'Searching...',
-								        	
 									        mode: 'overlay',
-											overlayConfig: {
-												zIndex: 2,	
-												width: '90%',
-												height: '90%',
-												inputPlaceHolder: 'Geben Sie hier den Städtenamen ein'
-											}
 										},
 										
 										autoCompleteRequest: {											
@@ -60,11 +48,6 @@
 									        	},
 									        	paramField: 'city'
 									        }
-										},
-										
-										itemTapCallback : function(itemData) {
-											console.log(itemData);
-											alert('Selected: ' + itemData.city);
 										}
 									}
 								}

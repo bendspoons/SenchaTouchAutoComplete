@@ -34,7 +34,7 @@ Ext.define('Ext.AutocompleteField', {
 		defaults: {
 			resultsDisplayMode : 'overlay',	
 			resultsDisplayQMinLength : 3,	
-			resultsDisplayItemTpl : '{city.name}',	
+			resultsDisplayItemTpl : '{city}',	
 			resultsDisplayEmptyText : 'No results',	
 			resultsDisplayLoadingText : 'Searching...',
 			resultsDisplayOverlayZIndex : 50,	
