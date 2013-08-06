@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<link href="http://extjs.cachefly.net/touch/sencha-touch-2.2.1/resources/css/sencha-touch.css" rel="stylesheet" type="text/css" />
+	<script src="http://extjs.cachefly.net/touch/sencha-touch-2.2.1/sencha-touch-all-debug.js" type="text/javascript"></script>
+	<script src="Ext.ux.AutoComplete.js" type="text/javascript" charset="utf-8"></script>
+	<title>Autocomplete for Sencha Touch 2</title>
+</head>
+<body>
+	
+	<script type="text/javascript" charset="utf-8">
+		Ext.application({
+			launch: function () {
+				
+				Ext.create('Ext.Container', {
+					fullscreen: true,
+					items: [
+						{
+							xtype: 'fieldset',
+							items: [
+								{
+									xtype: 'autocompletefield',
+									label: 'Stadt',
+									value: 'Ha',
+									config: {
+										resultsDisplay: {
+								        	qMinLength: 2,
+								        	itemTpl: '--> {city.name}, {county.name} - {state.name}',
+								        	itemTpl: '--> {city}, {county} - {state}',
+								        	emptyText: 'No results',
+								        	loadingText: 'Searching...',
+								        	
+									       	mode: 'inline',
+											inlineConfig: {
+								        		resultsHeight: '300'
+											}
+										},
+										
+										autoCompleteRequest: {											
+											fields: [
+												'id', 'city', 'state', 'county'
+											],
+
+											requestType: 'local', 		// From local source
+											proxy: {
+									        	url: 'results.json',
+									        	reader: {
+									        		rootProperty: 'result'
+									        	},
+									        	filterField: 'city'
+									        }
+										},
+										
+										itemTapCallback : function(itemData) {
+											console.log(itemData);
+											alert('Selected: ' + itemData.city);
+										}
+									}
+								}
+	
+							]
+						}
+					]
+				});
+			}
+		});
+	</script>
+	
+</body>
+</html>
