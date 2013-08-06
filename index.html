@@ -40,31 +40,31 @@ xtype: 'autocompletefield',
 label: 'Stadt',
 value: '',
 config: {
-	resultsDisplay: {
+    resultsDisplay: {
         mode: 'overlay',
-	},
+    },
 	
-	autoCompleteRequest: {											
-		fields: [
-			'id', 'city', 'state', 'county'
-		],
+    autoCompleteRequest: {											
+        fields: [
+            'id', 'city', 'state', 'county'
+        ],
 		
-		requestType: 'remote',
-		proxy: {
-        	url: 'http://geo.bendspoons.com/',
-		    extraParams: {
-		        returnType: 'json',
-		        token: '123456',
-		        mode: 'citystraight',
-		        like: 'true'
-		    },
-        	reader: {
-        		type: 'json',
-        		rootProperty: 'result'
-        	},
-        	paramField: 'city'
+        requestType: 'remote',
+        proxy: {
+            url: 'http://geo.bendspoons.com/',
+            extraParams: {
+                returnType: 'json',
+                token: '123456',
+                mode: 'citystraight',
+                like: 'true'
+            },
+            reader: {
+                type: 'json',
+                rootProperty: 'result'
+            },
+            paramField: 'city'
         }
-	}
+    }
 }
 			</code></pre>
 			
@@ -82,47 +82,47 @@ xtype: 'autocompletefield',
 label: 'Stadt',
 value: 'Ha',
 config: {
-	resultsDisplay: {
-    	qMinLength: 2,
-    	itemTpl: 'Custom Tpl: {city}',
-    	emptyText: 'Custom: No results',
-    	loadingText: 'Custom: Searching...',
+    resultsDisplay: {
+        qMinLength: 2,
+        itemTpl: 'Custom Tpl: {city}',
+        emptyText: 'Custom: No results',
+        loadingText: 'Custom: Searching...',
     	
         mode: 'overlay',
-		overlayConfig: {
-			zIndex: 5,	
-			width: 200,
-			height: 600,
-			inputPlaceHolder: 'Custom: Enter City Name (German Cities)'
-		}
-	},
-	
-	autoCompleteRequest: {											
-		fields: [
-			'id', 'city', 'state', 'county'
-		],
-		
-		requestType: 'remote',
-		proxy: {
-        	url: 'http://geo.bendspoons.com/',
-		    extraParams: {
-		        returnType: 'json',
-		        token: '123456',
-		        mode: 'citystraight',
-		        like: 'true'
-		    },
-        	reader: {
-        		type: 'json',
-        		rootProperty: 'result'
-        	},
-        	paramField: 'city'
+        overlayConfig: {
+            zIndex: 5,	
+            width: 200,
+            height: 600,
+            inputPlaceHolder: 'Custom: Enter City Name (German Cities)'
         }
-	},
+    },
 	
-	itemTapCallback : function(itemData) {
-		console.log(itemData);
-		alert('Selected: ' + itemData.city);
-	}
+    autoCompleteRequest: {											
+        fields: [
+            'id', 'city', 'state', 'county'
+        ],
+		
+        requestType: 'remote',
+        proxy: {
+            url: 'http://geo.bendspoons.com/',
+            extraParams: {
+                returnType: 'json',
+                token: '123456',
+                mode: 'citystraight',
+                like: 'true'
+            },
+            reader: {
+                type: 'json',
+                rootProperty: 'result'
+            },
+            paramField: 'city'
+        }
+    },
+	
+    itemTapCallback : function(itemData) {
+        console.log(itemData);
+        alert('Selected: ' + itemData.city);
+    }
 }
 			</code></pre>
 			
@@ -132,37 +132,37 @@ xtype: 'autocompletefield',
 label: 'Stadt',
 value: '',
 config: {
-	resultsDisplay: {
-    	qMinLength: 2,
-    	itemTpl: 'Custom Tpl: {city}',
-    	emptyText: 'Custom: No results',
-    	loadingText: 'Custom: Searching...',
+    resultsDisplay: {
+        qMinLength: 2,
+        itemTpl: 'Custom Tpl: {city}',
+        emptyText: 'Custom: No results',
+        loadingText: 'Custom: Searching...',
     	
-       	mode: 'inline',
-		inlineConfig: {
-    		resultsHeight: '300'
-		}
-	},
-	
-	autoCompleteRequest: {											
-		fields: [
-			'id', 'city', 'state', 'county'
-		],
-
-		requestType: 'local', 		// From local source
-		proxy: {
-        	url: 'results.json',
-        	reader: {
-        		rootProperty: 'result'
-        	},
-        	filterField: 'city'
+        mode: 'inline',
+        inlineConfig: {
+            resultsHeight: '300'
         }
-	},
+    },
 	
-	itemTapCallback : function(itemData) {
-		console.log(itemData);
-		alert('Selected: ' + itemData.city);
-	}
+    autoCompleteRequest: {											
+        fields: [
+            'id', 'city', 'state', 'county'
+        ],
+
+        requestType: 'local', 		// From local source
+        proxy: {
+            url: 'results.json',
+            reader: {
+                rootProperty: 'result'
+            },
+            filterField: 'city'
+        }
+    },
+	
+    itemTapCallback : function(itemData) {
+        console.log(itemData);
+        alert('Selected: ' + itemData.city);
+    }
 }
 			</code></pre>
 
