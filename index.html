@@ -33,6 +33,8 @@
 		<section id="main_content" class="inner">
 			<h3><a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Basic Usage</h3>
 			<p>Basic usage example for overlay and remote data request</p>
+			<p>"remote" means the store gets its data from an api server or kind of</p>
+			<p>"local" means the store gets its data from an local json file</p>
 			<pre><code>
 				xtype: 'autocompletefield',
 				label: 'Stadt',
@@ -126,7 +128,43 @@
 			
 			<h3><a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Example "inline"</h3>
 			<pre><code>
-			$ xxx
+			xtype: 'autocompletefield',
+			label: 'Stadt',
+			value: '',
+			config: {
+				resultsDisplay: {
+		        	qMinLength: 2,
+		        	itemTpl: 'Custom Tpl: {city}',
+		        	emptyText: 'Custom: No results',
+		        	loadingText: 'Custom: Searching...',
+		        	
+			       	mode: 'inline',
+					inlineConfig: {
+		        		resultsHeight: '300'
+					}
+				},
+				
+				autoCompleteRequest: {											
+					fields: [
+						'id', 'city', 'state', 'county'
+					],
+
+					requestType: 'local', 		// From local source
+					proxy: {
+			        	url: 'results.json',
+			        	reader: {
+			        		rootProperty: 'result'
+			        	},
+			        	filterField: 'city'
+			        }
+				},
+				
+				itemTapCallback : function(itemData) {
+					console.log(itemData);
+					alert('Selected: ' + itemData.city);
+				}
+			}
+		}
 			</code></pre>
 			
 			<h3><a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
