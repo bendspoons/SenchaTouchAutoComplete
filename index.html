@@ -33,8 +33,6 @@
 		<section id="main_content" class="inner">
 			<h3><a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Basic Usage</h3>
 			<p>Basic usage example for overlay and remote data request</p>
-			<p>"remote" means the store gets its data from an api server or kind of</p>
-			<p>"local" means the store gets its data from an local json file</p>
 			<pre><code>
 xtype: 'autocompletefield',
 label: 'Stadt',
@@ -70,10 +68,75 @@ config: {
 			
 			<h3><a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Config</h3>
 			<ul>
-				<li>xycyx</li>
-				<li>xycyx</li>
-				<li>xycyx</li>
-				<li>xycyx</li>
+				<li>
+					<strong>resultsDisplay.qMinLength {integer}</strong><br />
+					<em>minimum length of string to start autocomplete</em>
+				</li>
+				<li>
+					<strong>resultsDisplay.itemTpl</strong><br />
+					<em>The Autocomplete results are wrapped in Ext.list, so this can be defined like a regular itemTpl for Ext.list</em>
+				</li>
+				<li>
+					<strong>resultsDisplay.emptyText</strong><br />
+					<em>Ext.list emptyText</em>
+				</li>
+				<li>
+					<strong>resultsDisplay.loadingText</strong><br />
+					<em>Ext.list loadingText</em>
+				</li>
+				<li>
+					<strong>mode</strong> case-sensitiv<br />
+					<em>Wheater "overlay" or "inline". "Overlay" opens on textfield focus an overlay for Autocompletion. "inline" renders the list direct below the textinput. (Problem width "inline": scrolling makes trouble and wont work)</em>
+				</li>
+				<li>
+					<strong>overlayConfig.zIndex</strong><br />
+					<em>Only necessary for "overlay" mode: CSS zIndex of the overlay</em>
+				</li>
+				<li>
+					<strong>overlayConfig.width</strong><br />
+					<em>Only necessary for "overlay" mode: width of the overlay</em>
+				</li>
+				<li>
+					<strong>overlayConfig.height</strong><br />
+					<em>Only necessary for "overlay" mode: height of the overlay</em>
+				</li>
+				<li>
+					<strong>overlayConfig.inputPlaceHolder</strong><br />
+					<em>Only necessary for "overlay" mode: placeholder for the overlay textfield</em>
+				</li>
+				<li>
+					<strong>autoCompleteRequest.fields</strong><br />
+					<em>Store/Model fields,define like regular</em>
+				</li>
+				<li>
+					<strong>autoCompleteRequest.requestType case-sensitiv</strong><br />
+					<em>Currently working: "remote" and "local". "remote" means gathering data from a webserver, "local" from a local json file</em>
+				</li>
+				
+				<li>
+					<strong>autoCompleteRequest.proxy.url</strong><br />
+					<em>Wheater the local or remote url</em>
+				</li>
+				<li>
+					<strong>autoCompleteRequest.proxy.extraParams</strong><br />
+					<em>Only neccessary for "remote": Possible params for the api request, e.g. apikey: '1234'</em>
+				</li>
+				<li>
+					<strong>autoCompleteRequest.proxy.reader</strong><br />
+					<em>Definitions for store.reader</em>
+				</li>
+				<li>
+					<strong>autoCompleteRequest.proxy.paramField</strong><br />
+					<em>Only neccessary for "remote": is used for remote access as search param, like "query=TEXTINPUT", then paramField has to be 'query'. This value is set as textinput value</em>
+				</li>
+				<li>
+					<strong>autoCompleteRequest.proxy.filterField</strong><br />
+					<em>Only neccessary for "local": is used for store.filter and this value is set as textinput value</em>
+				</li>
+				<li>
+					<strong>itemTapCallback</strong><br />
+					<em>This function is called when tapped on Resultlistitem</em>
+				</li>
 			</ul>
 			
 			<h3><a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Example "overlay"</h3>
